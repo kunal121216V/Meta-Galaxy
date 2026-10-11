@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Meta Galaxy</title>
+    <meta name="description" content="Meta Galaxy — fashion beyond dimensions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/meta-galaxy/assets/css/style.css">
+</head>
+<body>
+    <div class="page-shell">
+        <nav class="navbar navbar-expand-lg fixed-top main-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="/meta-galaxy/index.php">
+                    <span class="brand-mark">M</span>
+                    <span class="brand-name">META GALAXY</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link " href="/meta-galaxy/index.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/meta-galaxy/shop.php?gender=Men">Men</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/meta-galaxy/shop.php?gender=Women">Women</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/meta-galaxy/shop.php?gender=Kids">Kids</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/meta-galaxy/shop.php?gender=Shoes">Shoes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/meta-galaxy/shop.php">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link " href="/meta-galaxy/about.php">About</a></li>
+                        <li class="nav-item"><a class="nav-link " href="/meta-galaxy/contact.php">Contact</a></li>
+                    </ul>
+
+                    <div class="navbar-actions d-flex align-items-center gap-2">
+                        <button class="nav-search-btn" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
+                            <i class="bi bi-search"></i>
+                        </button>
+                        <a class="nav-icon-link" href="/meta-galaxy/wishlist.php" aria-label="Wishlist">
+                            <i class="bi bi-heart"></i>
+                                                    </a>
+                        <a class="nav-icon-link" href="/meta-galaxy/cart.php" aria-label="Cart">
+                            <i class="bi bi-bag"></i>
+                                                    </a>
+                                                    <div class="dropdown">
+                                <button class="btn user-pill dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-person-circle"></i>
+                                    <span>Meta Galaxy Admin</span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="/meta-galaxy/account.php">Account</a></li>
+                                    <li><a class="dropdown-item" href="/meta-galaxy/orders.php">Orders</a></li>
+                                    <li><a class="dropdown-item" href="/meta-galaxy/logout.php">Logout</a></li>
+                                </ul>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="offcanvas offcanvas-start mobile-nav" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="mobileMenuLabel">META GALAXY</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="mobile-menu-list">
+                    <a href="/meta-galaxy/index.php">Home</a>
+                    <a href="/meta-galaxy/shop.php?gender=Men">Men</a>
+                    <a href="/meta-galaxy/shop.php?gender=Women">Women</a>
+                    <a href="/meta-galaxy/shop.php?gender=Kids">Kids</a>
+                    <a href="/meta-galaxy/shop.php?gender=Shoes">Shoes</a>
+                    <a href="/meta-galaxy/shop.php">Shop</a>
+                    <a href="/meta-galaxy/about.php">About</a>
+                    <a href="/meta-galaxy/contact.php">Contact</a>
+                                            <a href="/meta-galaxy/account.php">Account</a>
+                        <a href="/meta-galaxy/logout.php">Logout</a>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content search-modal-content">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title" id="searchModalLabel">Search products</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/meta-galaxy/search.php" method="GET" class="search-form">
+                            <div class="input-group search-input-group">
+                                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                <input type="text" name="q" class="form-control" placeholder="Search for shirts, shoes, pants..." aria-label="Search products">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </form>
+                        <div id="searchResults" class="search-results mt-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <section class="auth-page">
+    <div class="container">
+        <div class="auth-card">
+            <h2 class="text-center mb-4">Admin login</h2>
+            <form method="POST" action="/meta-galaxy/admin/login.php">
+                <input type="hidden" name="csrf_token" value="269f80f2bbd53ec040289c5fafc8e27a83bced4de3db1fd62b8bbf5d8e19ab8a">                <div class="mb-3"><label class="form-label">Email</label><input class="form-control" type="email" name="email" required></div>
+                <div class="mb-3"><label class="form-label">Password</label><input class="form-control" type="password" name="password" required></div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="footer-brand">
+                            <span class="brand-mark">M</span>
+                            <div>
+                                <h4>META GALAXY</h4>
+                                <p>FASHION BEYOND DIMENSIONS.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <h6>Shop</h6>
+                        <ul>
+                            <li><a href="/meta-galaxy/shop.php?gender=Men">Men</a></li>
+                            <li><a href="/meta-galaxy/shop.php?gender=Women">Women</a></li>
+                            <li><a href="/meta-galaxy/shop.php?gender=Kids">Kids</a></li>
+                            <li><a href="/meta-galaxy/shop.php?gender=Shoes">Shoes</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4">
+                        <h6>Company</h6>
+                        <ul>
+                            <li><a href="/meta-galaxy/about.php">About</a></li>
+                            <li><a href="/meta-galaxy/contact.php">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h6>Customer Service</h6>
+                        <ul>
+                            <li><a href="/meta-galaxy/shop.php">FAQ</a></li>
+                            <li><a href="/meta-galaxy/shop.php">Shipping</a></li>
+                            <li><a href="/meta-galaxy/shop.php">Returns</a></li>
+                            <li><a href="/meta-galaxy/contact.php">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="newsletter-box">
+                        <h6>Join the meta updates</h6>
+                        <form class="newsletter-form" method="post" action="/meta-galaxy/contact.php">
+                            <input type="email" name="email" placeholder="Your email" aria-label="Email">
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                    <div class="socials">
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="copyright-row">
+                    <span>© 2026 Meta Galaxy. All rights reserved.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.min.js"></script>
+    <script src="/meta-galaxy/assets/js/main.js"></script>
+    </body>
+</html>
